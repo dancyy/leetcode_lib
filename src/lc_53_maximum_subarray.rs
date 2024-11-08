@@ -1,4 +1,17 @@
-pub fn max_sub_array(nums: Vec<i32>) -> i32 {}
+pub fn max_sub_array(nums: Vec<i32>) -> i32 {
+    let mut max_sub = nums[0];
+    let mut current_sub = 0;
+
+    for n in nums {
+        if current_sub < 0 {
+            current_sub = 0
+        }
+        current_sub += n;
+        max_sub = max_sub.max(current_sub);
+    }
+    println!("{max_sub}");
+    max_sub
+}
 
 #[cfg(test)]
 mod test {
